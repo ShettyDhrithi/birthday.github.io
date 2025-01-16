@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto; /* Enables vertical scroll */
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #ff7ac0;
+            margin-top: 50px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: rgba(0, 0, 0, 0.6);
+            margin: 10px;
+        }
+        .enter-button {
+            padding: 20px 30px;
+            font-size: 50px;
+            color: white;
+            background-color: #ff6347;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .enter-button:hover {
+            background-color: #e5533c;
+        }
+        .birthday-message {
+            font-size: 1.5rem;
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+            margin-top: 20px;
+            line-height: 1.8;
+            padding: 0 20px; /* Adds padding for better readability */
+        }
+        .cake {
+            width: 250px;
+            opacity: 0;
+            margin-top: 30px;
+            transition: opacity 1s ease-in-out;
+        }
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff7ac0;
+            animation: confettiFall 2s linear infinite;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100vh);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 HEY, IT'S YOUR SPECIAL DAY PRETTY LADY!!! 🎉</h1>
+    <h2 style="color: #ff7ac0;">I've created something special for you😁</h2>
+    <h2 style="color: #ff7ac0;">Would you like to see it?</h2>
+    <button class="enter-button" onclick="startCelebration()">YES!!</button>
+
+    <!-- Birthday Elements -->
+    <div class="confetti" id="confetti"></div>
+    <img class="cake" id="cake" src="happy.webp" alt="Cake">
+    <div class="birthday-message" id="birthdayMessage">🎈🎉 Happy Birthday Pratiksha!! 🎂💖<br>
+        <p>
+        Happy Birthday to the Best Friend I Could Ever Ask For!🎈<br>  
+
+        To my constant support, my guide, and the purest soul I know,  
+        You’ve been there for me through everything, always lifting me up, and I can’t thank you enough for the love and light you bring into my life.  
+        
+        On your special day, I wish you endless happiness, because you truly deserve it. I pray that all your dreams come true and that life rewards you with everything your beautiful heart desires.  
+        
+        Never change the amazing person you are—your kindness, your positivitya, and your warmth are what make you so special.  
+        
+        Stay happy, stay blessed, and know that I’ll always be here for you, just as you’ve been for me.  
+        
+        Have the most amazing birthday! You deserve it! ❤️
+        </p>
+    </div>
+
+    <script>
+        function startCelebration() {
+            // Display confetti and birthday message
+            document.getElementById('confetti').style.display = 'block';
+            document.getElementById('birthdayMessage').style.display = 'block';
+            
+            // Display cake after a short delay
+            setTimeout(function() {
+                document.getElementById('cake').style.opacity = 1;
+            }, 1000);
+
+            // Hide the "Enter" button
+            document.querySelector('.enter-button').style.display = 'none';
+
+            // Create confetti effect
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            for (let i = 0; i < 100; i++) {
+                const confettiPiece = document.createElement('div');
+                confettiPiece.style.left = `${Math.random() * 100}%`;
+                confettiPiece.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                confettiPiece.style.animationDelay = `${Math.random() * 2}s`;
+                confettiContainer.appendChild(confettiPiece);
+            }
+        }
+    </script>
+</body>
+</html>
